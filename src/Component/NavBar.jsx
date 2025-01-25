@@ -13,9 +13,9 @@ const NavBar = () => {
             <div className='flex justify-between items-center'>
                 {/* Logo */}
                 <div className='flex items-baseline font-bold'>
-                     <h1 className='text-4xl md:text-6xl'>S</h1>
+                     <h1 className='text-xl md:text-2xl'>S</h1>
                     {/*<h1 className='text-xl md:text-2xl'>A</h1> */}
-                    <h1 className='text-xl md:text-2xl'>patiaScape</h1>
+                    <h1 className='text-xl md:text-xl'>patiaScape</h1>
                 </div>
 
                 {/* Menu Icon for Mobile */}
@@ -32,16 +32,16 @@ const NavBar = () => {
                 {/* Nav Links (hidden on mobile, shown on medium screens and up) */}
                 <div className='hidden md:flex'>
                     <ul className='flex space-x-5 md:space-x-10 lg:space-x-20'>
-                        <li className='font-semibold text-lg md:text-2xl'>Home</li>
-                        <li className='font-semibold text-lg md:text-2xl'>About Us</li>
-                        <li className='font-semibold text-lg md:text-2xl'>Properties</li>
-                        <li className='font-semibold text-lg md:text-2xl'>Agents</li>
+                        <li className='font-semibold text-lg md:text-sm'>Home</li>
+                        <li className='font-semibold text-lg md:text-sm'>About Us</li>
+                        <li className='font-semibold text-lg md:text-sm'>Properties</li>
+                        <li className='font-semibold text-lg md:text-sm'>Agents</li>
                     </ul>
                 </div>
 
                 
                 <div className='hidden md:block'>
-                    <button className='bg-transparent border-[3px] rounded-lg font-bold text-lg md:text-2xl py-3 md:py-5 px-4 md:px-8 border-black hover:bg-black hover:text-white transition duration-500'>
+                    <button className='bg-transparent border-[3px] rounded-lg font-bold text-lg md:text-xl py-3 md:py-5 px-4 md:px-8 border-black hover:bg-black hover:text-white transition duration-500'>
                         Find A House
                     </button>
                 </div>

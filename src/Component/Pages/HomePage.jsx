@@ -19,16 +19,16 @@ const HomePage = () => {
         <NavBar />
         <div className="container grid md:grid-cols-2 grid-cols-1 min-h-[710px] ">
           <div className="flex flex-col justify-center items-center md:items-start pt-20 space-y-12">
-            <h1 className="md:text-8xl text-6xl font-bold md:font-semibold text-center md:text-start">
+            <h1 className="md:text-7xl text-5xl font-bold md:font-semibold text-center md:text-start">
               Find A House That Suits You
             </h1>
-            <p className="text-gray-500 text-xl md:text-2xl font-semibold text-center md:text-start">
+            <p className="text-gray-500 text-xl md:text-lg font-semibold text-center md:text-start">
               Want to find a home? We are ready to help you find one that suits
               youyr lifestyle and needs
             </p>
 
             <div>
-              <button className="md:py-6 py-3 px-11 text-lg bg-black text-white md:px-20 rounded-lg 
+              <button className="md:py-3 py-3 px-11 text-lg bg-black text-white md:px-10 rounded-lg 
               font-bold hover:bg-transparent hover:text-black hover:font-bold hover:border-[3px] hover:border-black 
               transition duration-500">
                 Get Started
@@ -42,7 +42,7 @@ const HomePage = () => {
                   <FaPlus size={22} className="text-blue-600 font-bold" />
                 </div>
                 <div>
-                  <h1 className="text-gray-500 font-semibold text-center md:text-2xl">
+                  <h1 className="text-gray-500 font-semibold text-center ">
                     Listed Properties
                   </h1>
                 </div>
@@ -53,7 +53,7 @@ const HomePage = () => {
                   <FaPlus size={22} className="text-blue-600 font-bold" />
                 </div>
                 <div>
-                  <h1 className="text-gray-500 font-semibold text-center md:text-2xl">
+                  <h1 className="text-gray-500 font-semibold text-center ">
                     Happy Customers
                   </h1>
                 </div>
@@ -64,7 +64,7 @@ const HomePage = () => {
                   <FaPlus size={22} className="text-blue-600 font-bold" />
                 </div>
                 <div>
-                  <h1 className="text-gray-500 font-semibold text-center md:text-2xl">
+                  <h1 className="text-gray-500 font-semibold text-center ">
                     Awards Won
                   </h1>
                 </div>
@@ -80,7 +80,7 @@ const HomePage = () => {
 
       <div className="h-[500px] hidden lg:flex flex-col  bg-white z-20 relative">
         <div className="relative w-full flex flex-col items-center">
-          <div className="small-container  bg-white flexx  absolute px-11 shadow-xl h-[250px] mx-40 rounded-md top-[-120px]">
+          <div className="small-container  bg-white flexx  absolute px-11 shadow-xl h-[250px] mx-40 rounded-md top-[-100px]">
             <div className="flex flex-col justify-start items-start">
               <div>
                 <h1 className="text-2xl font-bold text-start pt-10">
@@ -157,12 +157,12 @@ const HomePage = () => {
       <div className="lg:h-[500px]  py-20 bg-black w-full relative z-20 flex flex-col ">
         <div className="flex  flex-col">
           <div className="lg:absolute gap-y-10 lg:h-[250px] flex flex-col  lg:flex-row gap-x-10 items-center pt-32 justify-evenly px-20 w-full lg:top-[-150px] ">
-            <div className="bg-white w-[370px] rounded-xl">
+            <div className="bg-white w-[370px] rounded-xl p-2">
               <div className="relative">
                 <img
                   src={House1}
                   alt="Property"
-                  className="w-full h-[200px] object-cover"
+                  className="w-full h-[200px] object-cover rounded-md"
                 />
               </div>
 
@@ -210,12 +210,12 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-white w-[370px] rounded-xl">
+            <div className="bg-white w-[370px] p-2 rounded-xl">
               <div className="relative">
                 <img
                   src={House2}
                   alt="Property"
-                  className="w-full h-[200px] object-cover"
+                  className="w-full h-[200px] object-fit rounded-md"
                 />
               </div>
 
@@ -263,12 +263,12 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-white w-[370px] rounded-xl">
+            <div className="bg-white w-[370px] p-2 rounded-xl">
               <div className="relative">
                 <img
                   src={House3}
                   alt="Property"
-                  className="w-full h-[200px] object-cover"
+                  className="w-full h-[200px] object-fit rounded-md"
                 />
               </div>
 
