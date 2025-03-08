@@ -15,6 +15,7 @@ const Explore = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // const response = await fetch("https://threed-admin-panel-be-1.onrender.com/models");  
         const response = await fetch("http://localhost:3000/models");
         const data = await response.json();
         setError(null);
@@ -55,13 +56,14 @@ const Explore = () => {
           onClick={() => navigate(-1)}
         />
       </div>
-      <div className="flex  flex-row justify-center md:justify-center flex-wrap">
+      <div className="flex  flex-row justify-center md:justify-start px-5 flex-wrap">
         {models.map((model) => (
           
           <div key={model._id} className="bg-white w-[300px] p-2 rounded-xl m-4">
             <div className="relative">
               <img
-                src={`http://localhost:3000${model.imagePath}`} // Transform Dropbox link
+                // src={`https://threed-admin-panel-be-1.onrender.com${model.imagePath[0]?.path}`} 
+                src={`http://localhost:3000${model.imagePath[0]?.path}`} 
                 alt={model.title}
                 className="w-full h-[230px] object-fit rounded-md"
               />

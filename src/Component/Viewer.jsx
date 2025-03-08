@@ -1,58 +1,47 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, Suspense } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Environment, useGLTF } from "@react-three/drei";
+import { OrbitControls, Environment, useGLTF, Html, useProgress } from "@react-three/drei";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import axios from "axios";
-import * as THREE from 'three';
-import gsap from "gsap";
+import * as THREE from "three";
+
+const Loader = () => {
+  const { progress } = useProgress();
+  return (
+    <Html center>
+      <div className="flex flex-col items-center">
+        <p className="text-white font-bold mb-2">Loading 3D Model</p>
+        <div className="w-64 h-[5px] bg-gray-300 rounded-full">
+          <div
+            className="h-full bg-blue-500 rounded-full"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        <p className="text-white text-center font-bold mb-2">{progress.toFixed(2)}% </p>
+
+      </div>
+    </Html>
+  );
+};
 
 const Model = ({ modelPath }) => {
   const { scene } = useGLTF(modelPath);
   return <primitive object={scene} scale={1.5} />;
 };
 
-const Scene = ({ cameraPosition, setCameraPosition }) => {
+export const Hotspot = ({ position, label, onClick }) => (
+  <mesh position={position} onClick={onClick}>
+    <sphereGeometry args={[0.3, 32, 32]} />
+    <meshBasicMaterial color="red" />
+    <Html distanceFactor={10}>
+      <div className="bg-black text-white px-2 py-1 rounded-md">{label}</div>
+    </Html>
+  </mesh>
+);
+
+const Scene = ({ cameraRef, setCameraPosition }) => {
   const orbitControlsRef = useRef();
-  const cameraRef = useRef();
-
-  useEffect(() => {
-    if (cameraRef.current && cameraPosition) {
-      const { position, rotation } = cameraPosition;
-
-      // Animate camera position only if it's different from the previous position
-      if (!cameraRef.current.position.equals(position)) {
-        gsap.to(cameraRef.current.position, {
-          x: position.x,
-          y: position.y,
-          z: position.z,
-          duration: 2,
-          ease: "power2.inOut",
-          onUpdate: () => {
-            if (orbitControlsRef.current) {
-              orbitControlsRef.current.update();
-            }
-          },
-        });
-      }
-
-      // Animate camera rotation only if it's different from the previous rotation
-      if (!cameraRef.current.rotation.equals(rotation)) {
-        gsap.to(cameraRef.current.rotation, {
-          x: rotation.x,
-          y: rotation.y,
-          z: rotation.z,
-          duration: 2,
-          ease: "power2.inOut",
-          onUpdate: () => {
-            if (orbitControlsRef.current) {
-              orbitControlsRef.current.update();
-            }
-          },
-        });
-      }
-    }
-  }, [cameraPosition]);
 
   return (
     <>
@@ -60,6 +49,38 @@ const Scene = ({ cameraPosition, setCameraPosition }) => {
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={1} />
       <Environment preset="sunset" />
+
+      {/* Hotspots */}
+      <Hotspot
+        position={[-4, 10, 1]}
+        label="Sitting Room"
+        onClick={() =>
+          setCameraPosition({
+            position: new THREE.Vector3(-6, 12, 16),
+            rotation: new THREE.Euler(0, Math.PI / 4, 0),
+          })
+        }
+      />
+      <Hotspot
+        position={[0, 15, 15]}
+        label="Kitchen"
+        onClick={() =>
+          setCameraPosition({
+            position: new THREE.Vector3(0, 15, 15),
+            rotation: new THREE.Euler(-Math.PI / 6, Math.PI / 2, 0),
+          })
+        }
+      />
+      <Hotspot
+        position={[-10, 5, 10]}
+        label="Room 1"
+        onClick={() =>
+          setCameraPosition({
+            position: new THREE.Vector3(-10, 5, 10),
+            rotation: new THREE.Euler(Math.PI / 8, Math.PI, 0),
+          })
+        }
+      />
     </>
   );
 };
@@ -70,22 +91,22 @@ const ViewModels = () => {
   const [model, setModel] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [cameraPosition, setCameraPosition] = useState(null);
+  const [cameraPosition, setCameraPosition] = useState({
+    position: new THREE.Vector3(30, 16, 0),
+    rotation: new THREE.Euler(0, 0, 0),
+  });
 
-  const cameraPositions = {
-    sittingRoom: {
-      position: new THREE.Vector3(10, 10, 10),
-      rotation: new THREE.Euler(0, Math.PI / 4, 0),
-    },
-    kitchen: {
-      position: new THREE.Vector3(0, 15, 15),
-      rotation: new THREE.Euler(-Math.PI / 6, Math.PI / 2, 0),
-    },
-    room1: {
-      position: new THREE.Vector3(-10, 5, 10),
-      rotation: new THREE.Euler(Math.PI / 8, Math.PI, 0),
-    },
-  };
+  const cameraRef = useRef();
+
+  useEffect(() => {
+    if (cameraRef.current && cameraPosition) {
+      const { position, rotation } = cameraPosition;
+
+      // This is the smooth update on camera position and rotation
+      cameraRef.current.position.copy(position);
+      cameraRef.current.rotation.copy(rotation);
+    }
+  }, [cameraPosition]);
 
   useEffect(() => {
     const fetchModel = async () => {
@@ -128,13 +149,6 @@ const ViewModels = () => {
     );
   }
 
-  const setCameraInstant = (position) => {
-    if (cameraRef.current) {
-      cameraRef.current.position.set(position.x, position.y, position.z);
-      cameraRef.current.rotation.set(position.rotation.x, position.rotation.y, position.rotation.z);
-    }
-  };
-
   return (
     <section className="min-h-screen px-10">
       <div className="flex flex-col">
@@ -145,41 +159,26 @@ const ViewModels = () => {
           <IoIosArrowRoundBack className="size-10 cursor-pointer text-black" />
           Back to Details Page
         </button>
-        
-        <div className="grid lg:grid-cols-2 gap-16 mb-10">
+
+        <div className="grid lg:grid-cols-1 gap-16 mb-10">
           <div className="md:h-[80vh] h-[60vh] relative">
             <Canvas
               camera={{ position: [30, 16, 0], fov: 40 }}
               gl={{ preserveDrawingBuffer: true }}
-              onCreated={({ gl }) => {
+              onCreated={({ camera, gl }) => {
+                cameraRef.current = camera;
                 gl.setClearColor("#333333");
+
               }}
             >
-              <Scene cameraPosition={cameraPosition} setCameraPosition={setCameraPosition} />
-              <Model modelPath={`http://localhost:3000${model.modelPath}`} />
+              <Suspense fallback={<Loader />}>
+                <Scene
+                  cameraRef={cameraRef}
+                  setCameraPosition={setCameraPosition}
+                />
+                <Model modelPath={`http://localhost:3000${model.modelPath}`} />
+              </Suspense>
             </Canvas>
-          </div>
-
-          <div className="bg-blue-200 w-full flex flex-col px-10 py-20 rounded-xl">
-            <h2 className="text-2xl font-bold mb-8">View Positions</h2>
-            <button 
-              onClick={() => setCameraPosition(cameraPositions.sittingRoom)}
-              className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 mb-4 rounded-lg transition-colors"
-            >
-              Sitting Room
-            </button>
-            <button 
-              onClick={() => setCameraPosition(cameraPositions.kitchen)}
-              className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 mb-4 rounded-lg transition-colors"
-            >
-              Kitchen
-            </button>
-            <button 
-              onClick={() => setCameraPosition(cameraPositions.room1)}
-              className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg transition-colors"
-            >
-              Room 1
-            </button>
           </div>
         </div>
       </div>

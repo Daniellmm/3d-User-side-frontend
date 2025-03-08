@@ -28,11 +28,13 @@ const HomePage = () => {
             </p>
 
             <div>
-              <button className="md:py-3 py-3 px-11 text-lg bg-black text-white md:px-10 rounded-lg 
+              <Link to="/explore">
+                <button className="md:py-3 py-3 px-11 text-lg bg-black text-white md:px-10 rounded-lg 
               font-bold hover:bg-transparent hover:text-black hover:font-bold hover:border-[3px] hover:border-black 
               transition duration-500">
-                Get Started
-              </button>
+                  Get Started
+                </button>
+              </Link>
             </div>
 
             <div className="flex flex-row items-center gap-x-14 justify-evenly">
@@ -125,7 +127,7 @@ const HomePage = () => {
 
                 </form>
                 <div>
-                  <button className="md:py-4 py-3 px-11 text-lg bg-black text-white md:px-10 rounded-lg font-semibold">
+                  <button className="md:py-3 py-2 px-11 text-[14px] bg-black text-white rounded-lg font-semibold">
                     Search Now
                   </button>
                 </div>
@@ -143,7 +145,7 @@ const HomePage = () => {
             <div className="container flex justify-between items-center">
               <h1 className="font-bold text-4xl">Our Popular Homes</h1>
               <Link to="/explore" className="flex items-center gap-x-2 group">
-                <h1 className="font-semibold text-2xl group-hover:underline">Explore All</h1>
+                <h1 className="font-semibold text-[18px] group-hover:underline">Explore All</h1>
                 <IoIosArrowRoundForward
                   size={40}
                   className="group-hover:translate-x-2 transition-transform duration-300"
@@ -155,9 +157,9 @@ const HomePage = () => {
       </div>
 
       <div className="lg:h-[500px]  py-20 bg-black w-full relative z-20 flex flex-col ">
-        <div className="flex  flex-col">
-          <div className="lg:absolute gap-y-10 lg:h-[250px] flex flex-col  lg:flex-row gap-x-10 items-center pt-32 justify-evenly px-20 w-full lg:top-[-150px] ">
-            <div className="bg-white w-[370px] rounded-xl p-2">
+        <div className="flex mx-10 flex-col">
+          <div className="lg:absolute gap-y-10 lg:h-[250px] flex flex-col lg:flex-row gap-x-10 items-center pt-32 justify-evenly px-20 w-full lg:top-[-150px] ">
+            <div className="bg-white lg:w-[370px] rounded-xl p-2">
               <div className="relative">
                 <img
                   src={House1}
@@ -198,19 +200,21 @@ const HomePage = () => {
                 </div>
 
 
-                <div className="flex justify-center gap-x-5 items-baseline">
+                <div className="flex justify-between gap-x-2 items-baseline">
+                  <Link to="/panaramo">
                   <div>
-                    <button className="bg-black text-white py-4 px-6 rounded-lg text-lg font-semibold w-full mb-4">
+                    <button className="bg-black text-white py-2 px-4 rounded-lg text-[12px] font-semibold w-full mb-4">
                       Book Now
                     </button>
                   </div>
+                  </Link>
 
 
-                  <div className="text-black text-2xl font-bold">₦100,000,000</div>
+                  <div className="text-black text-[16px] font-bold">₦100,000,000</div>
                 </div>
               </div>
             </div>
-            <div className="bg-white w-[370px] p-2 rounded-xl">
+            <div className="bg-white lg:w-[370px] p-2 rounded-xl">
               <div className="relative">
                 <img
                   src={House2}
@@ -251,19 +255,19 @@ const HomePage = () => {
                 </div>
 
 
-                <div className="flex justify-center gap-x-5 items-baseline">
+                <div className="flex justify-between gap-x-5 items-baseline">
                   <div>
-                    <button className="bg-black text-white py-4 px-6 rounded-lg text-lg font-semibold w-full mb-4">
+                    <button className="bg-black text-white py-2 px-4 rounded-lg text-[12px] font-semibold w-full mb-4">
                       Book Now
                     </button>
                   </div>
 
 
-                  <div className="text-black text-2xl font-bold">₦100,000,000</div>
+                  <div className="text-black text-[16px] font-bold">₦100,000,000</div>
                 </div>
               </div>
             </div>
-            <div className="bg-white w-[370px] p-2 rounded-xl">
+            <div className="bg-white lg:w-[370px] p-2 rounded-xl">
               <div className="relative">
                 <img
                   src={House3}
@@ -304,15 +308,15 @@ const HomePage = () => {
                 </div>
 
 
-                <div className="flex justify-center gap-x-5 items-baseline">
+                <div className="flex justify-between gap-x-5 items-baseline">
                   <div>
-                    <button className="bg-black text-white py-4 px-6 rounded-lg text-lg font-semibold w-full mb-4">
+                    <button className="bg-black text-white py-2 px-4 rounded-lg text-[12px] font-semibold w-full mb-4">
                       Book Now
                     </button>
                   </div>
 
 
-                  <div className="text-black text-2xl font-bold">₦500,000,000</div>
+                  <div className="text-black text-[16px] font-bold">₦500,000,000</div>
                 </div>
               </div>
             </div>
