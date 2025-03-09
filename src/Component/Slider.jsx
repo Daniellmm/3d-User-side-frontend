@@ -33,7 +33,8 @@ const Slider = ({ model }) => {
                         <IoIosArrowBack />
                     </div>
                     <div className="imageContainer flex-[10] h-[100%] w-[100%] object-cover">
-                        <img src={`http://localhost:3000${model[imageIndex]?.path}`} alt="" />
+                        <img src={`https://threed-admin-panel-be-1.onrender.com${model[imageIndex]?.path}`} alt="" />
+                        {/* <img src={`http://localhost:3000${model[imageIndex]?.path}`} alt="" /> */}
                         {/* <img src={model[imageIndex]?.path} alt="" /> */}
                     </div>
                     <div
@@ -54,7 +55,8 @@ const Slider = ({ model }) => {
                 <img
                     onClick={() => setImageIndex(0)}
                     className='w-[100%] h-[100%] object-cover rounded-[10px] cursor-pointer'
-                    src={`http://localhost:3000${model[0]?.path}`}
+                    src={`https://threed-admin-panel-be-1.onrender.com${model[0]?.path}`}
+                    // src={`http://localhost:3000${model[0]?.path}`}
                     alt=""
                 />
             </div>
@@ -63,7 +65,8 @@ const Slider = ({ model }) => {
                     <img
                         onClick={() => setImageIndex(index + 1)}
                         className='w-[100%] h-[100px] object-cover rounded-[10px] cursor-pointer'
-                        src={`http://localhost:3000${image.path}`}
+                        src={`https://threed-admin-panel-be-1.onrender.com${image.path}`}
+                        // src={`http://localhost:3000${image.path}`}
                         key={index}
                         alt=""
                     />
