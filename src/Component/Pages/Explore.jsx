@@ -15,8 +15,8 @@ const Explore = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await fetch("https://threed-admin-panel-be-1.onrender.com/models");  
-        const response = await fetch("http://localhost:3000/models");
+        const response = await fetch("https://threed-admin-panel-be-1.onrender.com/models");  
+        // const response = await fetch("http://localhost:3000/models");
         const data = await response.json();
         setError(null);
         setModels(data);

@@ -111,7 +111,8 @@ const ViewModels = () => {
   useEffect(() => {
     const fetchModel = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/models/${id}`);
+        const response = await axios.get(`https://threed-admin-panel-be-1.onrender.com/models/${id}`);
+        // const response = await axios.get(`http://localhost:3000/models/${id}`);
         setModel(response.data);
         setError(null);
       } catch (err) {
@@ -176,7 +177,8 @@ const ViewModels = () => {
                   cameraRef={cameraRef}
                   setCameraPosition={setCameraPosition}
                 />
-                <Model modelPath={`http://localhost:3000${model.modelPath}`} />
+                <Model modelPath={`https://threed-admin-panel-be-1.onrender.com${model.modelPath}`} />
+                {/* <Model modelPath={`http://localhost:3000${model.modelPath}`} /> */}
               </Suspense>
             </Canvas>
           </div>
