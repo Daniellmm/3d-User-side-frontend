@@ -62,8 +62,8 @@ const Explore = () => {
           <div key={model._id} className="bg-white w-[300px] p-2 rounded-xl m-4">
             <div className="relative">
               <img
-                // src={`https://threed-admin-panel-be-1.onrender.com${model.imagePath[0]?.path}`} 
-                src={`http://localhost:3000${model.imagePath[0]?.path}`} 
+                src={`https://threed-admin-panel-be-1.onrender.com${model.imagePath[0]?.path}`} 
+                // src={`http://localhost:3000${model.imagePath[0]?.path}`} 
                 alt={model.title}
                 className="w-full h-[230px] object-fit rounded-md"
               />
