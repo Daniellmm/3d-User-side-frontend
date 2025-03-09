@@ -158,7 +158,7 @@ const HomePage = () => {
 
       <div className="lg:h-[500px]  py-20 bg-black w-full relative z-20 flex flex-col ">
         <div className="flex mx-10 flex-col">
-          <div className="lg:absolute gap-y-10 lg:h-[250px] flex flex-col lg:flex-row gap-x-10 items-center pt-32 justify-evenly px-20 w-full lg:top-[-150px] ">
+          <div className="lg:absolute gap-y-10 lg:h-[250px] flex flex-col lg:flex-row gap-x-10 items-center pt-32 justify-evenly lg:px-20 w-full lg:top-[-150px] ">
             <div className="bg-white lg:w-[370px] rounded-xl p-2">
               <div className="relative">
                 <img
@@ -173,7 +173,7 @@ const HomePage = () => {
 
                 <div className="flex items-center text-gray-800 mb-4">
                   <FaMapMarkerAlt className="text-black mr-2" />
-                  <span className="font-bold text-xl">
+                  <span className="font-bold text-sm">
                     Banana Island, Lagos
                   </span>
                 </div>
@@ -183,19 +183,19 @@ const HomePage = () => {
 
                   <div className="flex items-center">
                     <FaBed className="mr-2" />
-                    <span className="font-semibold">4 Bed</span>
+                    <span className="font-semibold text-xs">4 Bed</span>
                   </div>
 
 
                   <div className="flex items-center">
                     <BiRuler className="mr-2" />
-                    <span className="font-semibold">10x10 m</span>
+                    <span className="font-semibold text-xs">10x10 m</span>
                   </div>
 
 
                   <div className="flex items-center">
                     <FiArrowUpRight className="mr-2" />
-                    <span className="font-semibold">1600 m²</span>
+                    <span className="font-semibold text-xs">1600 m²</span>
                   </div>
                 </div>
 
@@ -228,7 +228,7 @@ const HomePage = () => {
 
                 <div className="flex items-center text-gray-800 mb-4">
                   <FaMapMarkerAlt className="text-black mr-2" />
-                  <span className="font-bold text-xl">
+                  <span className="font-bold text-sm">
                     Parview Estate, Lagos
                   </span>
                 </div>
@@ -238,19 +238,19 @@ const HomePage = () => {
 
                   <div className="flex items-center">
                     <FaBed className="mr-2" />
-                    <span className="font-semibold">5 Bed</span>
+                    <span className="font-semibold text-xs">5 Bed</span>
                   </div>
 
 
                   <div className="flex items-center">
                     <BiRuler className="mr-2" />
-                    <span className="font-semibold">10x10 m</span>
+                    <span className="font-semibold text-xs">10x10 m</span>
                   </div>
 
 
                   <div className="flex items-center">
                     <FiArrowUpRight className="mr-2" />
-                    <span className="font-semibold">1600 m²</span>
+                    <span className="font-semibold text-xs">1600 m²</span>
                   </div>
                 </div>
 
@@ -281,7 +281,7 @@ const HomePage = () => {
 
                 <div className="flex items-center text-gray-800 mb-4">
                   <FaMapMarkerAlt className="text-black mr-2" />
-                  <span className="font-bold text-xl">
+                  <span className="font-bold text-sm">
                     Eko Atlantic, Lagos
                   </span>
                 </div>
@@ -291,19 +291,19 @@ const HomePage = () => {
 
                   <div className="flex items-center">
                     <FaBed className="mr-2" />
-                    <span className="font-semibold">3 Bed</span>
+                    <span className="font-semibold text-xs">3 Bed</span>
                   </div>
 
 
                   <div className="flex items-center">
                     <BiRuler className="mr-2" />
-                    <span className="font-semibold">10x10 m</span>
+                    <span className="font-semibold text-xs">10x10 m</span>
                   </div>
 
 
                   <div className="flex items-center">
                     <FiArrowUpRight className="mr-2" />
-                    <span className="font-semibold">1600 m²</span>
+                    <span className="font-semibold text-xs">1600 m²</span>
                   </div>
                 </div>
 
