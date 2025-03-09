@@ -4,7 +4,8 @@ import './App.css'
 import Viewer from './Component/Viewer'
 import HomePage from '../src/Component/Pages/HomePage'
 import Explore from './Component/Pages/Explore'
-import SinglePage from './Component/Pages/singlePage';
+// import SinglePage from './Component/Pages/singlePage';
+import SinglePage from './Component/Pages/SinglePage'
 // import VirtualTour from './Component/Pages/Pararoma';
 
 
